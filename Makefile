@@ -20,7 +20,7 @@ SHELL=/bin/bash
 
 
 IMAGE_REPO=vindevoy
-IMAGE_NAME=centos8-nginx-lua
+IMAGE_NAME=centos8-openresty
 IMAGE_VERSION=1.0.0
 
 PORT_FORWARDING=-p80:80
@@ -84,7 +84,7 @@ clean:
 # compile builds the docker image based on the src directory and tags the image as develop
 # compile uses layer after layer to improve development speed, but produces a larger image than needed
 compile:
-	docker build -t $(IMAGE_REPO)/$(IMAGE_NAME):dvl ./src/docker
+	docker build -t $(IMAGE_REPO)/$(IMAGE_NAME):dvl ./src -f ./src/docker/Dockerfile
 
 
 # run the image using the develop tag (created with compile)
@@ -105,7 +105,7 @@ build:
 	# only copy if files or directories exist
 	if [ `ls ./src/resources/ | wc -w` -gt 0 ]; then cp -R ./src/resources/* ./build/resources/ ; fi
 
-	docker build $(DOCKER_USE_SQUASH) -t $(IMAGE_REPO)/$(IMAGE_NAME):rel ./build/docker
+	docker build $(DOCKER_USE_SQUASH) -t $(IMAGE_REPO)/$(IMAGE_NAME):rel ./build -f ./build/docker/Dockerfile
 
 
 run: build
