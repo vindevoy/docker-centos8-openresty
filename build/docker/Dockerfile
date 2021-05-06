@@ -9,9 +9,9 @@ COPY resources/openresty.conf /root/openresty.conf
 RUN set -x && \ 
     dnf update -y --nodocs && \ 
     dnf install -y --nodocs openresty && \ 
-    chmod +x /root/openresty.sh
-
-ENV PATH=/usr/local/openresty/nginx/sbin:$PATH
+    chmod +x /root/openresty.sh && \ 
+    mkdir -p /var/log/openresty && \ 
+    chmod 664 /var/log/openresty
 
 EXPOSE 80
 

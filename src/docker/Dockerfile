@@ -3,7 +3,7 @@
 #	Yves Vindevogel (vindevoy)
 #	2021-05-05
 #
-#	Run a command line script and send the output in html via openresty
+#	Hello world with OpenResty, the base for further CLI over HTTP(S)
 #
 ###
 
@@ -20,7 +20,8 @@ RUN dnf install -y --nodocs openresty
 
 RUN chmod +x /root/openresty.sh 
 
-ENV PATH=/usr/local/openresty/nginx/sbin:$PATH
+RUN mkdir -p /var/log/openresty
+RUN chmod 664 /var/log/openresty
 
 EXPOSE 80
 
