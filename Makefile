@@ -20,10 +20,10 @@ SHELL=/bin/bash
 
 
 IMAGE_REPO=vindevoy
-IMAGE_NAME=centos8-nginx-lua
+IMAGE_NAME=centos8-openresty
 IMAGE_VERSION=1.0.0
 
-PORT_FORWARDING=-p80:80 -p8080:8080
+PORT_FORWARDING=-p80:80
 
 
 ######################
